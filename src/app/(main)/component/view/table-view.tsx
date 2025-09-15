@@ -1,4 +1,4 @@
-import SkeletonLoading from '@/components/common/skeletion-loading';
+import SkeletonLoading from '@/components/common/skeleton-loading';
 
 const TableView = ({ cryptoList, loading }) => {
   return loading ? (

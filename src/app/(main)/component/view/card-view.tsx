@@ -1,4 +1,4 @@
-import SkeletonLoading from '@/components/common/card-skeleton-loading';
+import SkeletonLoading from '@/components/common/skeleton-loading';
 
 const CardView = ({ cryptoList, loading }) => {
   return loading ? (
@@ -6,7 +6,7 @@ const CardView = ({ cryptoList, loading }) => {
   ) : (
     <div className="flex gap-5 flex-col">
       {cryptoList.map((c, index) => (
-        <div key={index} className="bg-zinc-8 00 text-white text-xl rounded-2xl shadow-md p-4">
+        <div key={index} className="bg-zinc-800 text-white text-xl rounded-2xl shadow-md p-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">{c.name}</h2>
