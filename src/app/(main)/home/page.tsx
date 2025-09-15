@@ -1,13 +1,15 @@
 'use client';
 import useCryptoStore from '@/store/crypto';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCryptos } from '@/lib/module/crypto';
-import Loading from '@/components/ui/loading';
+import TableView from '@/app/(main)/component/view/table-view';
+import PaginationButtons from '@/components/common/pagination-buttons';
+import useMediaQuery from '@/hooks/useMediaQuery';
+import CardView from '@/app/(main)/component/view/card-view';
 
 const Home = () => {
-  const { cryptos, setCryptos, page, setPage, limit, setLimit, _hydrated } = useCryptoStore((state) => state);
-  const [enabled, setEnabled] = useState(false);
+  const { cryptos, setCryptos, page, limit, enabled, setEnabled, _hydrated } = useCryptoStore((state) => state);
 
   const { refetch, data, isLoading, isError } = useQuery({
     enabled: enabled,
@@ -28,54 +30,16 @@ const Home = () => {
     }
   }, [_hydrated]);
 
-  const handlePagination = (page: number) => {
-    setPage(page);
-    setEnabled(true);
-  };
-
-  const toggleMore = (limit: number) => {
-    setLimit(limit);
-    setEnabled(true);
-  };
-
-  if (isLoading && cryptos.length === 0) return <Loading />;
+  const isDesktop = useMediaQuery('(min-width: 840px)');
+  const isLoadingData = useMemo(() => isLoading || cryptos.length === 0, [isLoading, cryptos]);
   if (isError) return <p>Error loading data</p>;
 
   return (
-    <main className="p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-      {cryptos.map((c) => (
-        <div key={c.id} className="p-4 rounded-xl shadow bg-white">
-          <h2 className="font-bold">
-            {c.id} {c.name} ({c.symbol})
-          </h2>
-          <p>Price: ${c.price}</p>
-        </div>
-      ))}
+    <div className="py-12 px-4">
+      {isDesktop ? <TableView loading={isLoadingData} cryptoList={cryptos} /> : <CardView loading={isLoadingData} cryptoList={cryptos} />}
 
-      <div className="col-span-full flex justify-between mt-4">
-        <button
-          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-          onClick={() => handlePagination(page - 1)}
-          disabled={page === 1}
-        >
-          Prev
-        </button>
-
-        {limit === 10 ? (
-          <button className="px-4 py-2 bg-gray-200 rounded" onClick={() => toggleMore(50)}>
-            Show More
-          </button>
-        ) : (
-          <button className="px-4 py-2 bg-gray-200 rounded" onClick={() => toggleMore(10)}>
-            Show Less
-          </button>
-        )}
-
-        <button className="px-4 py-2 bg-gray-200 rounded" onClick={() => handlePagination(page + 1)}>
-          Next
-        </button>
-      </div>
-    </main>
+      <PaginationButtons />
+    </div>
   );
 };
 
