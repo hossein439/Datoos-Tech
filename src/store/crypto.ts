@@ -1,8 +1,6 @@
 import { create } from 'zustand';
-// import CryptoService from '@/service/crypto';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import indexedDBStorage from '@/lib/shared/indexedDB.lib';
-// import axios from 'axios';
 
 type Crypto = {
   id: number;
@@ -12,26 +10,30 @@ type Crypto = {
 };
 
 interface CryptoStore {
+  _hydrated: boolean;
   cryptos: Crypto[];
   page: number;
   limit: number;
+  enabled: boolean;
   setCryptos: (cryptos: Crypto[]) => void;
   setPage: (page: number) => void;
   setLimit: (limit: number) => void;
-  _hydrated: boolean;
+  setEnabled: (enabled: boolean) => void;
   _setHydrated: (v: boolean) => void;
 }
 
 const useCryptoStore = create<CryptoStore>()(
   persist(
     (set, get) => ({
+      _hydrated: false,
       cryptos: [],
       page: 1,
       limit: 10,
+      enabled: false,
       setCryptos: (cryptos) => set({ cryptos }),
       setPage: (page) => set({ page }),
       setLimit: (limit) => set({ limit }),
-      _hydrated: false,
+      setEnabled: (enabled) => set({ enabled }),
       _setHydrated: (v) => set({ _hydrated: v }),
     }),
     {
