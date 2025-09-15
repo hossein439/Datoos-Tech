@@ -1,3 +1,10 @@
+import MainHeader from '@/app/(main)/component/header';
+
 export default function MainLayout({ children }: { children: React.ReactNode }) {
-  return <main>{children}</main>;
+  return (
+    <>
+      <MainHeader />
+      <main>{children}</main>
+    </>
+  );
 }
