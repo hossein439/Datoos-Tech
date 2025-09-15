@@ -1,0 +1,336 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import './theme.css';
+@import './font.css';
+@import './typography.css';
+@import './component.css';
+/* @import './reset.css'; */
+html {
+  overflow: hidden;
+}
+
+/* @media only screen and (min-width: 1024px) {
+  html {
+    height: 100vh;
+  }
+} */
+
+input,
+textarea,
+select,
+dialog {
+  border: none;
+  outline: none;
+
+  &:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+div[role='dialog']:focus-visible {
+  outline: 0;
+}
+
+button:focus-visible {
+  outline: 0;
+}
+
+@theme {
+  --font-lato: 'Lato', 'sans-serif';
+  --font-puff: 'DynaPuff', 'sans-serif';
+
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 600px;
+  --breakpoint-lg: 840px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1600px;
+
+  --radius-none: 0px;
+  --radius-xx-sm: 4px;
+  --radius-x-sm: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-big: 24px;
+  --radius-x-big: 32px;
+  --radius-xx-big: 40px;
+  --radius-xxx-big: 48px;
+  --radius-lg: 64px;
+  --radius-x-lg: 96px;
+  --radius-xx-lg: 128px;
+  --radius-xxx-lg: 1000px;
+
+  --color-primary-08: var(--primary-08);
+  --color-primary-12: var(--primary-12);
+  --color-primary-16: var(--primary-16);
+  --color-surface-tint-08: var(--surface-tint-08);
+  --color-surface-tint-12: var(--surface-tint-12);
+  --color-surface-tint-16: var(--surface-tint-16);
+  --color-on-primary-08: var(--on-primary-08);
+  --color-on-primary-12: var(--on-primary-12);
+  --color-on-primary-16: var(--on-primary-16);
+  --color-primary-container-08: var(--primary-container-08);
+  --color-primary-container-12: var(--primary-container-12);
+  --color-primary-container-16: var(--primary-container-16);
+
+  --color-secondary-08: var(--secondary-08);
+  --color-secondary-12: var(--secondary-12);
+  --color-secondary-16: var(--secondary-16);
+  --color-on-secondary-08: var(--on-secondary-08);
+  --color-on-secondary-12: var(--on-secondary-12);
+  --color-on-secondary-16: var(--on-secondary-16);
+  --color-secondary-container-08: var(--secondary-container-08);
+  --color-secondary-container-12: var(--secondary-container-12);
+  --color-secondary-container-16: var(--secondary-container-16);
+
+  --color-tertiary-08: var(--tertiary-08);
+  --color-tertiary-12: var(--tertiary-12);
+  --color-tertiary-16: var(--tertiary-16);
+  --color-on-tertiary-08: var(--on-tertiary-08);
+  --color-on-tertiary-12: var(--on-tertiary-12);
+  --color-on-tertiary-16: var(--on-tertiary-16);
+  --color-tertiary-container-08: var(--tertiary-container-08);
+  --color-tertiary-container-12: var(--tertiary-container-12);
+  --color-tertiary-container-16: var(--tertiary-container-16);
+
+  --color-error-08: var(--error-08);
+  --color-error-12: var(--error-12);
+  --color-error-16: var(--error-16);
+  --color-on-error-08: var(--on-error-08);
+  --color-on-error-12: var(--on-error-12);
+  --color-on-error-16: var(--on-error-16);
+  --color-error-container-08: var(--error-container-08);
+  --color-error-container-12: var(--error-container-12);
+  --color-error-container-16: var(--error-container-16);
+
+  --color-surface-08: var(--surface-08);
+  --color-surface-12: var(--surface-12);
+  --color-surface-16: var(--surface-16);
+
+  --color-on-surface-08: var(--on-surface-08);
+  --color-on-surface-12: var(--on-surface-12);
+  --color-on-surface-16: var(--on-surface-16);
+
+  --color-surface-variant-08: var(--surface-variant-08);
+  --color-surface-variant-12: var(--surface-variant-12);
+  --color-surface-variant-16: var(--surface-variant-16);
+
+  --color-on-surface-variant-08: var(--on-surface-variant-08);
+  --color-on-surface-variant-12: var(--on-surface-variant-12);
+  --color-on-surface-variant-16: var(--on-surface-variant-16);
+
+  --color-on-primary-container-08: var(--on-primary-container-08);
+  --color-on-primary-container-12: var(--on-primary-container-12);
+  --color-on-primary-container-16: var(--on-primary-container-16);
+
+  --color-on-secondary-container-08: var(--on-secondary-container-08);
+  --color-on-secondary-container-12: var(--on-secondary-container-12);
+  --color-on-secondary-container-16: var(--on-secondary-container-16);
+
+  --color-on-tertiary-container-08: var(--on-tertiary-container-08);
+  --color-on-tertiary-container-12: var(--on-tertiary-container-12);
+  --color-on-tertiary-container-16: var(--on-tertiary-container-16);
+
+  --color-on-error-container-08: var(--on-error-container-08);
+  --color-on-error-container-12: var(--on-error-container-12);
+  --color-on-error-container-16: var(--on-error-container-16);
+
+  --color-background-08: var(--background-08);
+  --color-background-12: var(--background-12);
+  --color-background-16: var(--background-16);
+
+  --color-on-background-08: var(--on-background-08);
+  --color-on-background-12: var(--on-background-12);
+  --color-on-background-16: var(--on-background-16);
+
+  --color-outline-08: var(--outline-08);
+  --color-outline-12: var(--outline-12);
+  --color-outline-16: var(--outline-16);
+
+  --color-outline-variant-08: var(--outline-variant-08);
+  --color-outline-variant-12: var(--outline-variant-12);
+  --color-outline-variant-16: var(--outline-variant-16);
+
+  --color-inverse-surface-08: var(--inverse-surface-08);
+  --color-inverse-surface-12: var(--inverse-surface-12);
+  --color-inverse-surface-16: var(--inverse-surface-16);
+
+  --color-inverse-on-surface-08: var(--inverse-on-surface-08);
+  --color-inverse-on-surface-12: var(--inverse-on-surface-12);
+  --color-inverse-on-surface-16: var(--inverse-on-surface-16);
+
+  --color-inverse-primary-08: var(--inverse-primary-08);
+  --color-inverse-primary-12: var(--inverse-primary-12);
+  --color-inverse-primary-16: var(--inverse-primary-16);
+
+  --color-primary: var(--primary);
+  --color-surface-tint: var(--surface-tint);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary: );
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface-variant: var(--on-surface-variant);
+
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-shadow: var(--shadow);
+  --color-scrim: var(--scrim);
+
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-inverse-primary: var(--inverse-primary);
+
+  --color-primary-fixed: var(--primary-fixed);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-dim);
+
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+
+  --shadow-dot: 10004px 0 0 -5px;
+  --shadow-dot-after: 10014px 0 0 -5px;
+  --shadow-dot-before: 9984px 0 0 -5px;
+
+  --animate-dot-pulse: dot-pulse 1.5s infinite linear;
+  --animate-dot-pulse-before: dot-pulse-before 1.5s infinite linear;
+  --animate-dot-pulse-after: dot-pulse-after 1.5s infinite linear;
+  --animate-shimmer: shimmer 1.5s infinite;
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dot-pulse-before {
+    0% {
+      box-shadow: 9984px 0 0 -5px;
+    }
+    30% {
+      box-shadow: 9984px 0 0 2px;
+    }
+    60%,
+    100% {
+      box-shadow: 9984px 0 0 -5px;
+    }
+  }
+
+  @keyframes dot-pulse {
+    0% {
+      box-shadow: 10004px 0 0 -5px;
+    }
+    30% {
+      box-shadow: 10004px 0 0 2px;
+    }
+    60%,
+    100% {
+      box-shadow: 10004px 0 0 -5px;
+    }
+  }
+
+  @keyframes dot-pulse-after {
+    0% {
+      box-shadow: 10014px 0 0 -5px;
+    }
+    30% {
+      box-shadow: 10014px 0 0 2px;
+    }
+    60%,
+    100% {
+      box-shadow: 10014px 0 0 -5px;
+    }
+  }
+}
+
+@layer components {
+  .dot-style::after,
+  .dot-style::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .dot-style::before {
+    box-shadow: 9984px 0 0 -5px;
+    animation: dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+  }
+
+  .dot-style::after {
+    box-shadow: 10014px 0 0 -5px;
+    animation: dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+  }
+}

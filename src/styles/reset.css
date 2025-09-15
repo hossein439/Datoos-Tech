@@ -1,0 +1,28 @@
+input,
+textarea,
+select,
+dialog {
+  border: none;
+  outline: none;
+
+  &:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
