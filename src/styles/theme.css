@@ -120,7 +120,7 @@
   --error-container: #ffdad6;
   --on-error-container: #410002;
 
-  --background: #fbf8ff;
+  --background: #0d1421;
   --on-background: #1a1b26;
 
   --surface: #fbf8ff;
@@ -162,6 +162,8 @@
   --surface-container: #eeecfc;
   --surface-container-high: #e8e6f6;
   --surface-container-highest: #e3e1f1;
+
+  --accent: #404040;
 }
 
 :root[data-theme='dark'] {
@@ -328,4 +330,6 @@
   --surface-container: #1e1f2a;
   --surface-container-high: #292935;
   --surface-container-highest: #333440;
+
+  --accent: #404040;
 }
