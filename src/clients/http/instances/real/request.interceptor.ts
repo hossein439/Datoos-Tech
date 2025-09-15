@@ -1,5 +1,5 @@
 import type { InternalAxiosRequestConfig, AxiosError } from 'axios';
-import cookie from '@/lib/cookie.lib';
+import cookie from '@/lib/shared/cookie.lib';
 
 const onRequestError = (error: AxiosError): Promise<never> => {
   return Promise.reject(error);

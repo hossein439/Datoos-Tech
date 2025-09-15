@@ -1,4 +1,4 @@
-import CryptoRepository from "@/repository/crypto";
+import CryptoRepository from '@/repository/crypto';
 
 class CryptoService {
   static #instance: CryptoService;
@@ -16,7 +16,7 @@ class CryptoService {
     return CryptoService.#instance;
   }
 
-  getList(params) {
+  async getList(params) {
     return this.repository.getList(params);
   }
 }
